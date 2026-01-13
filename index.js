@@ -53,7 +53,6 @@ console.log( `## Filtering input data` );
 const flat_data = unfiltered_data.filter( row =>
 {
 	if( !row[ 'New page path' ] ) return false;
-	if( !row[ 'Current URL' ] ) return false;
 
 	// Only keep pages in the path we're interested in
 	if( row[ 'New page path' ].indexOf( root_path_prefix ) !== 0 ) return false;
