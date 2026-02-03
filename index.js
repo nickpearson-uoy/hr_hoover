@@ -1,6 +1,8 @@
 /*
 
-node index.js ${ input_path } ${ root_path_prefix } ${ root_section_id }
+node index.js ${ input_path } ${ root_path_prefix } ${ root_section_id } | tee ./log/stdout.txt
+
+eg: node index.js input.csv /hr/ 328971 | tee ./log/stdout.txt
 
 */
 // --------------------------------------------------
