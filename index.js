@@ -82,7 +82,13 @@ async function fetch_stuff( pages )
 {
 	for( const page of pages )
 	{
-		page.contents = await get_page_contents( page.source_url , page.type );
+		const page_data = await get_page_contents( page.source_url , page.type );
+
+		if( page_data )
+		{
+			page.contents = page_data.contents;
+			page.meta = page_data.meta;
+		}
 
 		if( page.children.length > 0 ) await fetch_stuff( page.children );
 	};
