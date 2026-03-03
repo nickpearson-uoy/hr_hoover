@@ -9,6 +9,9 @@ eg: node index.js input.csv /hr/ 328971 | tee ./log/stdout.txt
 
 import Papa from 'papaparse';
 
+import { read } from 'read';
+import prompt from 'password-prompt';
+
 import fs from 'node:fs';
 
 // --------------------------------------------------
@@ -76,13 +79,24 @@ const data = make_hierarchical( flat_data , root_path_prefix );
 
 console.log( `## Fetching content from source pages` );
 
+
+console.log( '- 🔒 Enter your UoY user and password to access any source pages under access control/' )
+
+const user = await read(
+{
+	prompt: "--🧑‍💼 User: ",
+	silent: false,
+});
+
+const password = await prompt( "--🗝️ Password: " );
+
 await fetch_stuff( data );
 
 async function fetch_stuff( pages )
 {
 	for( const page of pages )
 	{
-		const page_data = await get_page_contents( page.source_url , page.type );
+		const page_data = await get_page_contents( page , user , password );
 
 		if( page_data )
 		{

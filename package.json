@@ -1,7 +1,8 @@
 {
-	"type":"module",
-	"dependencies":
-	{
-		"papaparse": "^5.5.3"
+	"type": "module",
+	"dependencies": {
+		"papaparse": "^5.5.3",
+		"password-prompt": "^1.1.3",
+		"read": "^5.0.1"
 	}
 }
